@@ -187,6 +187,61 @@ section{position:relative;z-index:1;padding:110px 0;}
 .d3{transition-delay:0.3s;}.d4{transition-delay:0.4s;}
 
 /* ====================================================
+   MISSION / ABOUT
+   ==================================================== */
+#about{background:var(--bg2);}
+.about-grid{display:grid;grid-template-columns:1fr 1.7fr;gap:5rem;align-items:start;}
+.about-lead{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.55rem,2.4vw,2.05rem);font-weight:400;line-height:1.45;
+  color:var(--txt1);border-left:2px solid var(--gold);padding-left:1.5rem;margin-bottom:1.8rem;
+}
+.about-tagline{font-size:0.97rem;color:var(--txt2);line-height:1.85;margin-bottom:2.2rem;}
+.about-cta-row{display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;}
+.about-cta{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.76rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  border:1px solid rgba(212,175,55,0.38);padding:0.58rem 1.35rem;border-radius:3px;
+  transition:var(--tr);
+}
+.about-cta:hover{background:var(--gold-dim);border-color:var(--gold);}
+.about-caps{list-style:none;display:flex;flex-direction:column;gap:0.9rem;}
+.about-cap{
+  padding:1.2rem 1.5rem;background:var(--card);
+  border:1px solid var(--border);border-left:2px solid var(--gold);
+  border-radius:0 8px 8px 0;transition:var(--tr);cursor:default;
+}
+.about-cap:hover{border-left-color:var(--gold);border-color:var(--border-a);
+  box-shadow:0 4px 24px rgba(212,175,55,0.08);transform:translateX(3px);}
+.about-cap-hd{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.55rem;}
+.about-cap-icon{
+  width:28px;height:28px;border-radius:6px;
+  background:var(--gold-dim);border:1px solid rgba(212,175,55,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.72rem;color:var(--gold);flex-shrink:0;
+}
+.about-cap-title{
+  font-size:0.73rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold);
+}
+.about-cap-text{font-size:0.87rem;color:var(--txt2);line-height:1.75;}
+.about-footer{
+  margin-top:3.2rem;padding-top:2.4rem;border-top:1px solid var(--border);
+  text-align:center;
+}
+.about-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.15rem,2vw,1.5rem);font-style:italic;
+  color:var(--txt1);max-width:720px;margin:0 auto 1rem;line-height:1.55;
+}
+.about-quote::before{content:'\201C';color:var(--gold);}
+.about-quote::after{content:'\201D';color:var(--gold);}
+.about-byline{font-size:0.8rem;color:var(--txt3);}
+.about-byline a{color:var(--gold);text-decoration:none;font-weight:600;}
+.about-byline a:hover{text-decoration:underline;}
+@media(max-width:960px){.about-grid{grid-template-columns:1fr;gap:3rem;}}
+
+/* ====================================================
    HERO
    ==================================================== */
 #hero{
@@ -746,6 +801,7 @@ footer{
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">TSANTA</a>
     <ul class="nav-links">
+      <li><a href="#about">Mission</a></li>
       <li><a href="#featured">Work</a></li>
       <li><a href="#stack">Stack</a></li>
       <li><a href="#experience">Journey</a></li>
@@ -765,6 +821,7 @@ footer{
 </nav>
 <div class="mobile-menu" id="mobile-menu">
   <ul>
+    <li><a href="#about" onclick="closeMobile()">Mission</a></li>
     <li><a href="#featured" onclick="closeMobile()">Work</a></li>
     <li><a href="#stack" onclick="closeMobile()">Stack</a></li>
     <li><a href="#experience" onclick="closeMobile()">Journey</a></li>
@@ -826,6 +883,72 @@ footer{
         <span class="stat-lbl">MSc Grade (/ 20)</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ======================== MISSION / ABOUT ======================== -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Left column: problem statement + tagline -->
+      <div class="reveal">
+        <div class="section-label">The Mission</div>
+        <p class="about-lead">Businesses drown in data they cannot act on, lose clients to faster competitors, and run processes that still wait on humans.</p>
+        <p class="about-tagline">Holding an MSc in Big Data and AI, I engineer intelligent systems from commercial outcome to technical architecture — autonomously from conception to production. I work with founders and technical leads to close that gap, remotely worldwide.</p>
+        <div class="about-cta-row">
+          <a href="#contact" class="about-cta"><i class="fas fa-arrow-right"></i> Let's talk</a>
+          <a href="#experience" class="about-cta" style="border-color:var(--border);color:var(--txt2);">View journey</a>
+        </div>
+      </div>
+
+      <!-- Right column: 5 capability pillars -->
+      <ul class="about-caps reveal d1">
+        <li class="about-cap">
+          <div class="about-cap-hd">
+            <div class="about-cap-icon"><i class="fas fa-magnifying-glass"></i></div>
+            <div class="about-cap-title">Search &amp; Recommendation</div>
+          </div>
+          <div class="about-cap-text">When businesses need to surface the right product, service, or content to the right person at the right moment, I build search and recommendation systems using hybrid retrieval combining semantic, lexical, knowledge graph, and multimodal search across text, image, and structured data — for catalogue discovery, service matching, and personalised retrieval.</div>
+        </li>
+        <li class="about-cap">
+          <div class="about-cap-hd">
+            <div class="about-cap-icon"><i class="fas fa-layer-group"></i></div>
+            <div class="about-cap-title">Production AI &amp; Data Systems</div>
+          </div>
+          <div class="about-cap-text">I build production-grade software and data systems where AI accelerates every layer of the stack — from full-stack integration, data pipelines, and RAG platforms to model training and fine-tuning, engineered with Claude Code in agentic mode with skills, rules, and memory. Built-in support intelligence covers triage, escalation, and SLA automation, refined through RLHF and deployed with full MLOps automation.</div>
+        </li>
+        <li class="about-cap">
+          <div class="about-cap-hd">
+            <div class="about-cap-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="about-cap-title">BI &amp; Decision Intelligence</div>
+          </div>
+          <div class="about-cap-text">Business performance should never require a data analyst to interpret it. I build forecasting, anomaly detection, and decision intelligence on CDC-synchronised data warehouses, making every business metric queryable in plain language — combined with CRM and multi-agent platforms covering scoring, pipeline orchestration, retention, and reactivation, connected through MCP protocol with reinforcement learning optimising every decision.</div>
+        </li>
+        <li class="about-cap">
+          <div class="about-cap-hd">
+            <div class="about-cap-icon"><i class="fas fa-robot"></i></div>
+            <div class="about-cap-title">Commercial Cycle Automation</div>
+          </div>
+          <div class="about-cap-text">I automate the full commercial cycle end to end by text or voice — from lead generation to onboarding, covering sourcing, contact enrichment, BANT scoring, multichannel outreach across email, LinkedIn, and cold call, follow-up, qualification, appointment setting, call intelligence, CRM automation, and fulfilment tracking with intelligent routing at every stage.</div>
+        </li>
+        <li class="about-cap">
+          <div class="about-cap-hd">
+            <div class="about-cap-icon"><i class="fas fa-eye"></i></div>
+            <div class="about-cap-title">Multimodal &amp; Document Intelligence</div>
+          </div>
+          <div class="about-cap-text">Most systems cannot process the unstructured data locked in documents, emails, and visual environments. I build multimodal pipelines covering OCR, document understanding, contract extraction, form parsing, and email automation through MCP-connected pipelines — extended to object detection, segmentation, visual search, BIM integration, point cloud processing, inventory and logistics intelligence, and geolocation mapping across industrial, construction, retail, and supply chain environments.</div>
+        </li>
+      </ul>
+
+    </div><!-- /about-grid -->
+
+    <!-- Closing quote -->
+    <div class="about-footer reveal">
+      <p class="about-quote">If you are ready to stop waiting on humans and start running on intelligence, let us talk.</p>
+      <p class="about-byline">Always learning, always shipping. &nbsp;·&nbsp; <a href="https://guillaume.wikolabs.com" target="_blank" rel="noopener">guillaume.wikolabs.com</a></p>
+    </div>
+
   </div>
 </section>
 
