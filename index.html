@@ -777,6 +777,79 @@ footer{
 .foot-copy{font-size:0.79rem;color:var(--txt3);}
 
 /* ====================================================
+   TL-CO LINK
+   ==================================================== */
+a.tl-co-link{color:var(--txt2);text-decoration:none;transition:var(--tr);display:inline-flex;align-items:center;gap:0.3rem;}
+a.tl-co-link:hover{color:var(--gold);}
+a.tl-co-link i{font-size:0.62em;opacity:0.65;}
+
+/* ====================================================
+   SERVICES
+   ==================================================== */
+#services{background:var(--bg2);}
+.svc-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.4rem;margin:3rem 0 2.5rem;
+}
+.svc-card{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:1.8rem 1.6rem;transition:var(--tr);position:relative;overflow:hidden;
+}
+.svc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:var(--tr);
+}
+.svc-card:hover{border-color:var(--border-a);background:var(--card-h);transform:translateY(-3px);}
+.svc-card:hover::before{opacity:1;}
+.svc-ico{font-size:1.6rem;color:var(--gold);margin-bottom:1rem;}
+.svc-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--txt1);margin-bottom:0.6rem;}
+.svc-desc{font-size:0.84rem;color:var(--txt2);line-height:1.65;margin-bottom:1rem;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.svc-tag{font-size:0.72rem;color:var(--txt3);background:var(--gold-dim);padding:0.2rem 0.55rem;border-radius:2px;}
+.svc-results{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));
+  gap:1rem;border-top:1px solid var(--border);padding-top:2.5rem;margin-bottom:0.5rem;
+}
+.svc-result{
+  text-align:center;padding:1.4rem 1rem;
+  background:var(--card);border:1px solid var(--border);border-radius:8px;transition:var(--tr);
+}
+.svc-result:hover{border-color:var(--border-a);}
+.svc-result-num{
+  font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:600;
+  color:var(--gold);display:block;line-height:1;
+}
+.svc-result-label{font-size:0.78rem;color:var(--txt2);margin-top:0.4rem;line-height:1.4;}
+.svc-result-ctx{font-size:0.7rem;color:var(--txt3);margin-top:0.25rem;}
+.svc-packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem;margin-top:1rem;}
+.svc-pkg{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:2rem 1.8rem;transition:var(--tr);
+}
+.svc-pkg:hover{border-color:var(--border-a);background:var(--card-h);}
+.svc-pkg.featured{border-color:var(--border-a);background:var(--gold-dim);}
+.svc-pkg-badge{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
+.svc-pkg-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;color:var(--txt1);margin-bottom:0.3rem;}
+.svc-pkg-duration{font-size:0.77rem;color:var(--txt3);margin-bottom:1rem;}
+.svc-pkg-desc{font-size:0.84rem;color:var(--txt2);line-height:1.65;margin-bottom:1.2rem;}
+.svc-pkg-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.svc-pkg-list li{font-size:0.82rem;color:var(--txt2);display:flex;gap:0.5rem;align-items:flex-start;}
+.svc-pkg-list li::before{content:'✓';color:var(--green);flex-shrink:0;font-weight:700;}
+.svc-cta{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-size:0.88rem;color:var(--gold);text-decoration:none;
+  border:1px solid var(--border-a);padding:0.8rem 1.8rem;border-radius:4px;
+  background:var(--gold-dim);transition:var(--tr);
+}
+.svc-cta:hover{background:var(--gold);color:#000;}
+.gold-link{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-glow);transition:var(--tr);}
+.gold-link:hover{border-bottom-color:var(--gold);}
+.svc-pkg-title{
+  font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;
+  color:var(--txt1);text-align:center;margin:3rem 0 1.5rem;
+}
+
+/* ====================================================
    RESPONSIVE
    ==================================================== */
 @media(max-width:1024px){
@@ -803,6 +876,92 @@ footer{
   .btn-gold,.btn-ghost{justify-content:center;}
   .feat-metrics{gap:1rem;}
 }
+@media(max-width:768px){
+  .agent-tabs{gap:0.4rem;}
+  .agent-tab{font-size:0.72rem;padding:0.45rem 0.9rem;}
+  .agent-grid-inner{grid-template-columns:1fr;}
+  .svc-results{grid-template-columns:repeat(2,1fr);}
+  .svc-packages{grid-template-columns:1fr;}
+  .svc-grid{grid-template-columns:1fr;}
+}
+
+/* ====================================================
+   AGENTS CATALOG
+   ==================================================== */
+#agents{background:var(--bg);}
+.agent-tabs{
+  display:flex;flex-wrap:wrap;gap:0.5rem;
+  margin:2.5rem 0 2rem;border-bottom:1px solid var(--border);padding-bottom:1.5rem;
+}
+.agent-tab{
+  font-size:0.78rem;font-weight:600;letter-spacing:0.05em;
+  padding:0.5rem 1.1rem;border:1px solid var(--border);border-radius:4px;
+  background:var(--card);color:var(--txt2);cursor:pointer;transition:var(--tr);
+  white-space:nowrap;
+}
+.agent-tab:hover{border-color:var(--border-a);color:var(--txt1);}
+.agent-tab.active{border-color:var(--gold);color:var(--gold);background:var(--gold-dim);}
+.agent-panel{display:none;}
+.agent-panel.active{display:block;}
+.agent-cat-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1.5rem;flex-wrap:wrap;gap:0.8rem;
+}
+.agent-cat-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem,2vw,1.5rem);font-weight:500;color:var(--txt1);
+}
+.agent-discover{
+  font-size:0.8rem;color:var(--gold);text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.35rem;transition:var(--tr);
+  border-bottom:1px solid var(--gold-glow);padding-bottom:1px;
+}
+.agent-discover:hover{gap:0.6rem;border-bottom-color:var(--gold);}
+.agent-grid-inner{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:1.2rem;
+}
+.agent-card{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:1.5rem 1.4rem;transition:var(--tr);display:flex;flex-direction:column;gap:0.75rem;
+  position:relative;overflow:hidden;
+}
+.agent-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:var(--tr);
+}
+.agent-card:hover{border-color:var(--border-a);background:var(--card-h);transform:translateY(-2px);box-shadow:var(--sh);}
+.agent-card:hover::after{opacity:1;}
+.agent-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-weight:500;color:var(--txt1);line-height:1.3;
+}
+.agent-desc{font-size:0.82rem;color:var(--txt2);line-height:1.65;flex:1;}
+.agent-badges{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.2rem;}
+.ab{
+  display:inline-flex;align-items:center;gap:0.2rem;
+  font-size:0.68rem;font-weight:600;padding:0.18rem 0.5rem;border-radius:3px;
+  border:1px solid transparent;
+}
+.ab-lg{background:rgba(34,197,94,0.12);color:#22C55E;border-color:rgba(34,197,94,0.2);}
+.ab-lc{background:rgba(34,211,238,0.1);color:var(--teal);border-color:rgba(34,211,238,0.2);}
+.ab-py{background:rgba(59,130,246,0.1);color:#60A5FA;border-color:rgba(59,130,246,0.2);}
+.ab-n8n{background:rgba(234,88,12,0.1);color:#FB923C;border-color:rgba(234,88,12,0.2);}
+.ab-fapi{background:rgba(6,182,212,0.1);color:#22D3EE;border-color:rgba(6,182,212,0.2);}
+.ab-bq{background:rgba(59,130,246,0.1);color:#3B82F6;border-color:rgba(59,130,246,0.2);}
+.ab-sk{background:rgba(245,158,11,0.1);color:#F59E0B;border-color:rgba(245,158,11,0.2);}
+.ab-tf{background:rgba(239,68,68,0.1);color:#F87171;border-color:rgba(239,68,68,0.2);}
+.ab-pt{background:rgba(239,68,68,0.12);color:#EF4444;border-color:rgba(239,68,68,0.25);}
+.ab-es{background:rgba(252,211,77,0.1);color:#FCD34D;border-color:rgba(252,211,77,0.2);}
+.ab-df{background:rgba(99,102,241,0.1);color:#818CF8;border-color:rgba(99,102,241,0.2);}
+.ab-gcp{background:rgba(59,130,246,0.08);color:#93C5FD;border-color:rgba(59,130,246,0.15);}
+.ab-def{background:var(--gold-dim);color:var(--gold);border-color:var(--border-a);}
+.agent-more{
+  font-size:0.76rem;color:var(--gold);text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.3rem;transition:var(--tr);
+  margin-top:auto;padding-top:0.3rem;
+}
+.agent-more:hover{gap:0.55rem;}
 </style>
 </head>
 <body>
@@ -818,6 +977,8 @@ footer{
       <li><a href="#about">Mission</a></li>
       <li><a href="#featured">Work</a></li>
       <li><a href="#stack">Stack</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#agents">Agents</a></li>
       <li><a href="#experience">Journey</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -838,6 +999,8 @@ footer{
     <li><a href="#about" onclick="closeMobile()">Mission</a></li>
     <li><a href="#featured" onclick="closeMobile()">Work</a></li>
     <li><a href="#stack" onclick="closeMobile()">Stack</a></li>
+    <li><a href="#services" onclick="closeMobile()">Services</a></li>
+    <li><a href="#agents" onclick="closeMobile()">Agents</a></li>
     <li><a href="#experience" onclick="closeMobile()">Journey</a></li>
     <li><a href="#education" onclick="closeMobile()">Education</a></li>
     <li><a href="#contact" onclick="closeMobile()">Contact</a></li>
@@ -1101,7 +1264,7 @@ footer{
         <div class="tl-dot"></div>
         <div class="tl-meta">
           <span class="tl-date">Dec 2025 — Present</span>
-          <span class="tl-co">Wikolabs</span>
+          <a class="tl-co tl-co-link" href="https://wikolabs.com" target="_blank" rel="noopener noreferrer">Wikolabs <i class="fas fa-external-link-alt"></i></a>
           <span class="tl-loc">Antananarivo, Madagascar</span>
         </div>
         <div class="tl-role">Tech Lead — AI & Automation Studio</div>
@@ -1308,6 +1471,454 @@ footer{
       </div>
 
     </div><!-- /timeline -->
+  </div>
+</section>
+
+<!-- ======================== SERVICES ======================== -->
+<section id="services">
+  <div class="container">
+    <div class="section-hd reveal">
+      <div class="section-label">What I Deliver</div>
+      <h2 class="section-title">AI Solutions<br>Built for Production</h2>
+      <p class="section-sub">Production-grade AI, data engineering, and intelligent automation — the same capabilities powering <a href="https://wikolabs.com" target="_blank" rel="noopener" class="gold-link">wikolabs.com</a>, available for your project.</p>
+    </div>
+
+    <div class="svc-grid reveal">
+      <div class="svc-card">
+        <div class="svc-ico"><i class="fas fa-magnifying-glass"></i></div>
+        <div class="svc-title">Search & Recommendation</div>
+        <p class="svc-desc">Semantic, lexical, and multimodal search across catalogs and data. Personalized recommendations with collaborative filtering, hybrid vector matching, and Vision AI.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Vector Search</span><span class="svc-tag">Gemini Vision</span>
+          <span class="svc-tag">pgvector</span><span class="svc-tag">BigQuery</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico"><i class="fas fa-robot"></i></div>
+        <div class="svc-title">Production AI &amp; Agents</div>
+        <p class="svc-desc">RAG platforms, multi-agent systems with persistent memory, automated triage pipelines, support automation, and full MLOps deployment pipelines.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">LangGraph</span><span class="svc-tag">Google ADK</span>
+          <span class="svc-tag">MLOps</span><span class="svc-tag">Fine-tuning</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico"><i class="fas fa-chart-line"></i></div>
+        <div class="svc-title">Decision Intelligence</div>
+        <p class="svc-desc">Real-time forecasting, anomaly detection, natural language BI queries, multi-agent CRM with LTV scoring, and automated reporting straight from your data sources.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">NL-to-SQL</span><span class="svc-tag">Forecasting</span>
+          <span class="svc-tag">BigQuery</span><span class="svc-tag">Groq LLM</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico"><i class="fas fa-bullseye"></i></div>
+        <div class="svc-title">Commercial Automation</div>
+        <p class="svc-desc">End-to-end B2B pipeline: lead sourcing agents, BANT qualification, personalized multi-channel outreach, auto-generated proposals, and DocuSign integration.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">n8n / Make</span><span class="svc-tag">Apollo API</span>
+          <span class="svc-tag">DocuSign</span><span class="svc-tag">Calendly</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico"><i class="fas fa-eye"></i></div>
+        <div class="svc-title">Vision &amp; Document AI</div>
+        <p class="svc-desc">OCR and contract extraction, form parsing, email automation, object detection at 40fps, BIM &amp; 3D point cloud processing, and geospatial mapping.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">YOLO</span><span class="svc-tag">Gemini Flash</span>
+          <span class="svc-tag">OCR</span><span class="svc-tag">BIM / GIS</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico"><i class="fas fa-database"></i></div>
+        <div class="svc-title">Data Engineering &amp; Cloud</div>
+        <p class="svc-desc">ETL/ELT pipelines, lakehouse architectures with real-time CDC, AWS/GCP/Azure migrations, and cloud-native cost optimization — production-hardened and budget-optimized.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Airflow</span><span class="svc-tag">Snowflake</span>
+          <span class="svc-tag">Terraform</span><span class="svc-tag">Kubernetes</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico"><i class="fas fa-layer-group"></i></div>
+        <div class="svc-title">Fullstack SaaS Platforms</div>
+        <p class="svc-desc">Custom web and mobile applications, REST/GraphQL APIs, microservices architecture, and SEO-optimized platforms — shipped with 750+ tests and full DevOps pipelines.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Next.js</span><span class="svc-tag">FastAPI</span>
+          <span class="svc-tag">NestJS</span><span class="svc-tag">React</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real-world results -->
+    <div class="svc-results reveal">
+      <div class="svc-result">
+        <span class="svc-result-num">80%</span>
+        <div class="svc-result-label">Tickets auto-resolved</div>
+        <div class="svc-result-ctx">RAG agent · 500/week in &lt;45s</div>
+      </div>
+      <div class="svc-result">
+        <span class="svc-result-num">3.4×</span>
+        <div class="svc-result-label">More qualified leads</div>
+        <div class="svc-result-ctx">200 ICP+ leads/week, BANT-scored</div>
+      </div>
+      <div class="svc-result">
+        <span class="svc-result-num">97%</span>
+        <div class="svc-result-label">Quality control accuracy</div>
+        <div class="svc-result-ctx">Fine-tuned YOLO · 40fps</div>
+      </div>
+      <div class="svc-result">
+        <span class="svc-result-num">8×</span>
+        <div class="svc-result-label">Faster document processing</div>
+        <div class="svc-result-ctx">2,000 invoices/month · &lt;0.3% errors</div>
+      </div>
+      <div class="svc-result">
+        <span class="svc-result-num">−38%</span>
+        <div class="svc-result-label">Cloud cost reduction</div>
+        <div class="svc-result-ctx">€18k → €11k/month · 99.9% uptime</div>
+      </div>
+      <div class="svc-result">
+        <span class="svc-result-num">+41%</span>
+        <div class="svc-result-label">E-commerce conversion</div>
+        <div class="svc-result-ctx">Semantic search · +22% cart value</div>
+      </div>
+    </div>
+
+    <!-- Engagement packages -->
+    <h3 class="svc-pkg-title reveal">How We Work Together</h3>
+    <div class="svc-packages reveal">
+      <div class="svc-pkg">
+        <div class="svc-pkg-badge">01 · Discovery</div>
+        <div class="svc-pkg-name">Strategic Audit</div>
+        <div class="svc-pkg-duration">1 – 2 weeks</div>
+        <p class="svc-pkg-desc">Deep-dive into your processes to identify automation opportunities and quick wins — with a concrete roadmap and ROI estimates ready for leadership.</p>
+        <ul class="svc-pkg-list">
+          <li>Process analysis &amp; bottleneck mapping</li>
+          <li>Quick-win identification</li>
+          <li>Technology stack assessment</li>
+          <li>Actionable roadmap with ROI estimates</li>
+        </ul>
+      </div>
+      <div class="svc-pkg featured">
+        <div class="svc-pkg-badge">02 · Build</div>
+        <div class="svc-pkg-name">Complete Deployment</div>
+        <div class="svc-pkg-duration">4 – 12 weeks</div>
+        <p class="svc-pkg-desc">Full solution design, integration with your existing tools, bi-weekly sprint demos, production deployment, team training, and post-launch support.</p>
+        <ul class="svc-pkg-list">
+          <li>Solution architecture &amp; design</li>
+          <li>Integration with CRM, ERP, existing APIs</li>
+          <li>Bi-weekly demos · daily standups</li>
+          <li>Production deployment &amp; team training</li>
+          <li>Post-launch support &amp; roadmap iteration</li>
+        </ul>
+      </div>
+      <div class="svc-pkg">
+        <div class="svc-pkg-badge">03 · Optimize</div>
+        <div class="svc-pkg-name">Integration &amp; Optimization</div>
+        <div class="svc-pkg-duration">2 – 8 weeks</div>
+        <p class="svc-pkg-desc">Audit existing systems, build targeted AI modules, connect external APIs, and validate performance before zero-downtime re-deployment to production.</p>
+        <ul class="svc-pkg-list">
+          <li>Existing system audit</li>
+          <li>Targeted AI module development</li>
+          <li>API connections &amp; performance validation</li>
+          <li>Zero-downtime re-deployment</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="reveal" style="text-align:center;margin-top:2.5rem;">
+      <a href="#contact" class="svc-cta">
+        <i class="fas fa-comments"></i> Let's talk about your project
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== AGENT CATALOG ======================== -->
+<section id="agents">
+  <div class="container">
+    <div class="section-hd reveal">
+      <div class="section-label">Agent Library</div>
+      <h2 class="section-title">20+ Agents IA<br>Prêts à Déployer</h2>
+      <p class="section-sub">Chaque agent est un système autonome connecté à vos outils — CRM, ERP, WooCommerce, Shopify, Notion, Slack. Résultats mesurables dès le premier sprint.</p>
+    </div>
+
+    <!-- Category tabs -->
+    <div class="agent-tabs reveal">
+      <button class="agent-tab active" data-panel="commercial">Cycle Commercial &amp; Marketing</button>
+      <button class="agent-tab" data-panel="support">Support &amp; Service Client</button>
+      <button class="agent-tab" data-panel="bi">BI &amp; Intelligence Décisionnelle</button>
+      <button class="agent-tab" data-panel="search">Recherche &amp; Données Structurées</button>
+      <button class="agent-tab" data-panel="vision">Documents, Vision &amp; Industrie</button>
+    </div>
+
+    <!-- PANEL: Commercial & Marketing -->
+    <div class="agent-panel active" id="panel-commercial">
+      <div class="agent-cat-header">
+        <div class="agent-cat-title">Cycle Commercial &amp; Marketing</div>
+        <a href="#contact" class="agent-discover">Découvrir <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="agent-grid-inner">
+        <div class="agent-card">
+          <div class="agent-name">Agent Veille Marché</div>
+          <p class="agent-desc">Scraping quotidien de vos concurrents, nouveaux entrants et opportunités. Résumé LLM livré dans Notion ou Slack.</p>
+          <div class="agent-badges">
+            <span class="ab ab-lg">LangGraph</span>
+            <span class="ab ab-py">Python</span>
+            <span class="ab ab-n8n">n8n</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Agent Sourcing de Leads</div>
+          <p class="agent-desc">Collecte automatisée de contacts B2B qualifiés via Apollo, LinkedIn et annuaires, synchronisés dans votre CRM.</p>
+          <div class="agent-badges">
+            <span class="ab ab-lg">LangGraph</span>
+            <span class="ab ab-lc">LangChain</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Agent Outreach Multicanal</div>
+          <p class="agent-desc">Séquences personnalisées email + LinkedIn + appel générées par LLM, avec tracking et relances automatiques.</p>
+          <div class="agent-badges">
+            <span class="ab ab-lg">LangGraph</span>
+            <span class="ab ab-n8n">n8n</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Agent Qualification BANT</div>
+          <p class="agent-desc">Analyse des réponses prospects, score BANT mis à jour, routage intelligent : HOT vers setter / COLD vers nurturing.</p>
+          <div class="agent-badges">
+            <span class="ab ab-lg">LangGraph</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Agent Setter (Prise de RDV)</div>
+          <p class="agent-desc">Proposition de créneaux via Calendly, confirmations, rappels J-1 et brief pré-call généré par LLM.</p>
+          <div class="agent-badges">
+            <span class="ab ab-lg">LangGraph</span>
+            <span class="ab ab-fapi">FastAPI</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Agent Proposition Commerciale</div>
+          <p class="agent-desc">Draft de proposition commerciale généré depuis les notes du discovery call. PDF envoyé via DocuSign automatiquement.</p>
+          <div class="agent-badges">
+            <span class="ab ab-lg">LangGraph</span>
+            <span class="ab ab-fapi">FastAPI</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Agent Rétention &amp; Upsell</div>
+          <p class="agent-desc">Détection de churn risk par analyse comportementale, email de réengagement personnalisé et séquence upsell déclenchée après succès.</p>
+          <div class="agent-badges">
+            <span class="ab ab-lg">LangGraph</span>
+            <span class="ab ab-n8n">n8n</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL: Support & Service Client -->
+    <div class="agent-panel" id="panel-support">
+      <div class="agent-cat-header">
+        <div class="agent-cat-title">Support &amp; Service Client</div>
+        <a href="#contact" class="agent-discover">Découvrir <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="agent-grid-inner">
+        <div class="agent-card">
+          <div class="agent-name">Agent SAV E-commerce (RAG)</div>
+          <p class="agent-desc">Répond aux clients par email et WhatsApp sur statut commande, livraison et retours. Règles métier dans Notion. Compatible WooCommerce et Shopify.</p>
+          <div class="agent-badges">
+            <span class="ab ab-lc">LangChain</span>
+            <span class="ab ab-lg">LangGraph</span>
+            <span class="ab ab-fapi">FastAPI</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Agent Triage &amp; Escalade</div>
+          <p class="agent-desc">Priorisation automatique des tickets par urgence et catégorie, réponse aux questions fréquentes, escalade vers humain si complexe.</p>
+          <div class="agent-badges">
+            <span class="ab ab-lg">LangGraph</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Agent Onboarding Client</div>
+          <p class="agent-desc">Email de bienvenue automatique, checklist d'onboarding suivie dans Notion ou Jira, rappels si étapes non complétées.</p>
+          <div class="agent-badges">
+            <span class="ab ab-n8n">n8n</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Agent Notes Discovery</div>
+          <p class="agent-desc">Transcription automatique des calls (Whisper) et résumé LLM structuré. Fiche créée automatiquement dans le CRM.</p>
+          <div class="agent-badges">
+            <span class="ab ab-py">Python</span>
+            <span class="ab ab-lc">LangChain</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL: BI & Intelligence Décisionnelle -->
+    <div class="agent-panel" id="panel-bi">
+      <div class="agent-cat-header">
+        <div class="agent-cat-title">BI &amp; Intelligence Décisionnelle</div>
+        <a href="#contact" class="agent-discover">Découvrir <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="agent-grid-inner">
+        <div class="agent-card">
+          <div class="agent-name">Agent BI Langage Naturel</div>
+          <p class="agent-desc">Questions en français ou anglais vers SQL généré vers dashboard automatique. Vos équipes lisent leurs KPIs sans analyste.</p>
+          <div class="agent-badges">
+            <span class="ab ab-bq">BigQuery</span>
+            <span class="ab ab-lg">LangGraph</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Reporting Automatique (PPT/PDF)</div>
+          <p class="agent-desc">Dashboard PowerPoint ou PDF généré depuis WooCommerce, Shopify ou toute source, enrichi de données externes pour le pilotage.</p>
+          <div class="agent-badges">
+            <span class="ab ab-py">Python</span>
+            <span class="ab ab-bq">BigQuery</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Forecasting &amp; Anomalies</div>
+          <p class="agent-desc">Prévisions de revenus sur 3/6/12 mois, détection d'anomalies en temps réel, alertes automatiques sur churn risk et dérives.</p>
+          <div class="agent-badges">
+            <span class="ab ab-sk">Scikit-learn</span>
+            <span class="ab ab-tf">TensorFlow</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">CRM Multi-agent &amp; Pipeline</div>
+          <p class="agent-desc">Scoring LTV, pipeline orchestration, alertes renouvellement et réactivation. CRM piloté par l'IA, pas par vos commerciaux.</p>
+          <div class="agent-badges">
+            <span class="ab ab-lg">LangGraph</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL: Recherche & Données Structurées -->
+    <div class="agent-panel" id="panel-search">
+      <div class="agent-cat-header">
+        <div class="agent-cat-title">Recherche &amp; Données Structurées</div>
+        <a href="#contact" class="agent-discover">Découvrir <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="agent-grid-inner">
+        <div class="agent-card">
+          <div class="agent-name">Moteur de Recherche Sémantique</div>
+          <p class="agent-desc">Recherche vectorielle sur vos catalogues, bases de connaissance et contenus. Résultats pertinents dès le premier mot.</p>
+          <div class="agent-badges">
+            <span class="ab ab-py">Python</span>
+            <span class="ab ab-fapi">FastAPI</span>
+            <span class="ab ab-es">Elasticsearch</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Recommandation Personnalisée</div>
+          <p class="agent-desc">Collaborative filtering et matching hybride pour surface le bon produit ou service à la bonne personne au bon moment.</p>
+          <div class="agent-badges">
+            <span class="ab ab-tf">TensorFlow</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Pipeline de Données Intelligent</div>
+          <p class="agent-desc">ETL, CDC, synchronisation temps réel et data warehouse interrogeable en langage naturel via MCP.</p>
+          <div class="agent-badges">
+            <span class="ab ab-py">Python</span>
+            <span class="ab ab-bq">BigQuery</span>
+            <span class="ab ab-df">Dataflow</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Fine-tuning &amp; MLOps</div>
+          <p class="agent-desc">Entraînement, RLHF, déploiement et monitoring de modèles IA sur votre infrastructure ou la nôtre (GCP, AWS, Azure).</p>
+          <div class="agent-badges">
+            <span class="ab ab-pt">PyTorch</span>
+            <span class="ab ab-tf">TensorFlow</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL: Documents, Vision & Industrie -->
+    <div class="agent-panel" id="panel-vision">
+      <div class="agent-cat-header">
+        <div class="agent-cat-title">Documents, Vision &amp; Industrie</div>
+        <a href="#contact" class="agent-discover">Découvrir <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="agent-grid-inner">
+        <div class="agent-card">
+          <div class="agent-name">OCR &amp; Extraction Documentaire</div>
+          <p class="agent-desc">Extraction intelligente de données dans vos contrats, formulaires, factures et emails. Structurées en base automatiquement.</p>
+          <div class="agent-badges">
+            <span class="ab ab-py">Python</span>
+            <span class="ab ab-lg">LangGraph</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Vision IA &amp; Détection d'Objets</div>
+          <p class="agent-desc">Détection, segmentation et classification visuelle pour inventaire, qualité industrielle, logistique et retail.</p>
+          <div class="agent-badges">
+            <span class="ab ab-pt">PyTorch</span>
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">BIM &amp; Point Cloud</div>
+          <p class="agent-desc">Traitement de maquettes numériques (BIM) et données 3D point cloud pour le bâtiment, la construction et l'industrie.</p>
+          <div class="agent-badges">
+            <span class="ab ab-py">Python</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="agent-card">
+          <div class="agent-name">Cartographie &amp; Géolocalisation</div>
+          <p class="agent-desc">Analyse spatiale, routage logistique intelligent et cartographie automatisée depuis vos données terrain.</p>
+          <div class="agent-badges">
+            <span class="ab ab-py">Python</span>
+            <span class="ab ab-gcp">GCP</span>
+          </div>
+          <a href="#contact" class="agent-more">En savoir plus <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1908,6 +2519,17 @@ const revObs=new IntersectionObserver((entries)=>{
 },{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 document.querySelectorAll('.stat-num').forEach(el=>revObs.observe(el));
+
+/* -------- AGENT CATALOG TABS -------- */
+document.querySelectorAll('.agent-tab').forEach(tab=>{
+  tab.addEventListener('click',function(){
+    document.querySelectorAll('.agent-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.agent-panel').forEach(p=>p.classList.remove('active'));
+    this.classList.add('active');
+    const panel=document.getElementById('panel-'+this.dataset.panel);
+    if(panel) panel.classList.add('active');
+  });
+});
 
 /* -------- PROJECT FILTER -------- */
 document.querySelectorAll('.fbtn').forEach(btn=>{
