@@ -256,7 +256,14 @@ section{position:relative;z-index:1;padding:110px 0;}
     radial-gradient(ellipse 500px 400px at 55% 85%,rgba(34,211,238,0.035) 0%,transparent 70%);
   pointer-events:none;
 }
-.hero-wrap{max-width:1280px;margin:0 auto;padding:0 2rem;position:relative;z-index:2;}
+.hero-wrap{max-width:1280px;margin:0 auto;padding:0 2rem;position:relative;z-index:2;display:flex;align-items:center;gap:3.5rem;}
+.hero-content{flex:1;min-width:0;}
+.hero-orbital-col{
+  flex:0 0 430px;height:430px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;animation:fadeIn 1s ease 1.8s both;
+  pointer-events:none;
+}
 .hero-badge{
   display:inline-flex;align-items:center;gap:0.6rem;
   background:var(--gold-dim);border:1px solid var(--border-a);
@@ -784,6 +791,88 @@ footer{
 .foot-copy{font-size:0.79rem;color:var(--txt3);}
 
 /* ====================================================
+   ORBITAL ANIMATION (hero)
+   ==================================================== */
+.orbital-scene{
+  position:relative;width:430px;height:430px;
+  display:flex;align-items:center;justify-content:center;
+}
+/* Center glow node */
+.orb-center{
+  position:relative;z-index:10;
+  width:72px;height:72px;border-radius:50%;
+  background:var(--gold-dim);border:1px solid var(--border-a);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:1.75rem;
+  box-shadow:0 0 40px var(--gold-glow),0 0 80px var(--gold-glow);
+}
+.orb-center::before,.orb-center::after{
+  content:'';position:absolute;border-radius:50%;
+  border:1px solid rgba(212,175,55,0.25);
+  animation:orb-pulse 3s ease infinite;
+}
+.orb-center::before{inset:-12px;animation-delay:0s;}
+.orb-center::after{inset:-24px;opacity:0.4;animation-delay:1.5s;}
+@keyframes orb-pulse{0%,100%{transform:scale(1);opacity:0.7;}50%{transform:scale(1.08);opacity:0.1;}}
+/* Static ring tracks */
+.orb-track{
+  position:absolute;border-radius:50%;border:1px dashed transparent;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.orb-track-1{width:186px;height:186px;border-color:rgba(212,175,55,0.18);}
+.orb-track-2{width:292px;height:292px;border-color:rgba(91,156,246,0.12);}
+.orb-track-3{width:400px;height:400px;border-color:rgba(255,255,255,0.06);}
+/* Spinning containers */
+.orb-spin{
+  position:absolute;border-radius:50%;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.orb-spin-1{width:186px;height:186px;animation:orb-cw 22s linear infinite;}
+.orb-spin-2{width:292px;height:292px;animation:orb-ccw 34s linear infinite;}
+.orb-spin-3{width:400px;height:400px;animation:orb-cw 50s linear infinite;}
+@keyframes orb-cw{to{transform:translate(-50%,-50%) rotate(360deg);}}
+@keyframes orb-ccw{to{transform:translate(-50%,-50%) rotate(-360deg);}}
+/* Nodes — positioned at angle --a, radius --r from center of spin container */
+.orb-node{
+  position:absolute;top:50%;left:50%;
+  transform:rotate(var(--a)) translateX(var(--r)) translateY(-50%);
+  width:38px;height:38px;margin:-19px 0 0 -19px;
+}
+.orb-node-icon{
+  width:38px;height:38px;border-radius:50%;
+  background:var(--card);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:0.85rem;transition:border-color 0.3s;
+  pointer-events:all;cursor:default;
+}
+.orb-node-icon.blue{color:var(--blue);}
+.orb-node-icon.teal{color:var(--teal);}
+.orb-node-icon.green{color:var(--green);}
+/* Counter-rotation to keep icons upright */
+.orb-spin-1 .orb-node-icon{animation:orb-ccw-node 22s linear infinite;}
+.orb-spin-2 .orb-node-icon{animation:orb-cw-node 34s linear infinite;}
+.orb-spin-3 .orb-node-icon{animation:orb-ccw-node 50s linear infinite;}
+@keyframes orb-cw-node{to{transform:rotate(360deg);}}
+@keyframes orb-ccw-node{to{transform:rotate(-360deg);}}
+/* Text node (outer ring) */
+.orb-node-text{
+  width:auto;height:auto;padding:0.18rem 0.55rem;
+  border-radius:3px;background:var(--card);border:1px solid var(--border);
+  font-size:0.62rem;font-weight:700;letter-spacing:0.07em;
+  color:var(--txt3);white-space:nowrap;
+  pointer-events:all;cursor:default;
+  animation:orb-ccw-node 50s linear infinite;
+}
+.orb-node.text-nd{
+  width:auto;height:auto;margin:0;
+  transform:rotate(var(--a)) translateX(200px) translateY(-50%);
+}
+/* Orbital tooltip on hover */
+.orb-node-icon:hover,.orb-node-text:hover{
+  border-color:var(--border-a);background:var(--card-h);
+}
+
+/* ====================================================
    TL-CO LINK
    ==================================================== */
 a.tl-co-link{color:var(--txt2);text-decoration:none;transition:var(--tr);display:inline-flex;align-items:center;gap:0.3rem;}
@@ -859,6 +948,9 @@ a.tl-co-link i{font-size:0.62em;opacity:0.65;}
 /* ====================================================
    RESPONSIVE
    ==================================================== */
+@media(max-width:1100px){
+  .hero-orbital-col{display:none;}
+}
 @media(max-width:1024px){
   .feat-card{grid-template-columns:1fr;}
   .feat-card.flip{direction:ltr;}
@@ -1018,25 +1110,89 @@ a.tl-co-link i{font-size:0.62em;opacity:0.65;}
 <!-- ======================== HERO ======================== -->
 <section id="hero">
   <div class="hero-wrap">
-    <div class="hero-badge"><span class="pulse"></span>Available for New Missions</div>
-    <div class="hero-name">
-      <span class="hero-n1">GUILLAUME</span>
-      <span class="hero-n2">Rakotonjanahary Tsantaniaina</span>
+    <!-- Left: text content -->
+    <div class="hero-content">
+      <div class="hero-badge"><span class="pulse"></span>Available for New Missions</div>
+      <div class="hero-name">
+        <span class="hero-n1">GUILLAUME</span>
+        <span class="hero-n2">Rakotonjanahary Tsantaniaina</span>
+      </div>
+      <div class="hero-line"></div>
+      <div class="hero-main-title">Forward Deployed AI/Data Engineer</div>
+      <div class="hero-role">
+        <span class="typed" id="typed"></span><span class="caret"></span>
+      </div>
+      <p class="hero-summary">
+        Helping CEOs design and deploy end-to-end intelligent products — from first sketch to production.
+        AI-assisted engineering, multi-agent systems, voice &amp; vision AI, multimodal search,
+        and predictive automation, delivered with measurable ROI from Antananarivo to the world.
+      </p>
+      <div class="hero-cta">
+        <a href="#featured" class="btn-gold"><i class="fas fa-briefcase"></i> View My Work</a>
+        <a href="Guillaume_Tsanta_CV_AI_Engineer-5.docx%20(3).pdf" class="btn-ghost" download><i class="fas fa-download"></i> Download CV</a>
+        <a href="https://www.linkedin.com/in/tsanta1146" class="btn-ghost" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
     </div>
-    <div class="hero-line"></div>
-    <div class="hero-main-title">Forward Deployed AI/Data Engineer</div>
-    <div class="hero-role">
-      <span class="typed" id="typed"></span><span class="caret"></span>
-    </div>
-    <p class="hero-summary">
-      Helping CEOs design and deploy end-to-end intelligent products — from first sketch to production.
-      AI-assisted engineering, multi-agent systems, voice &amp; vision AI, multimodal search,
-      and predictive automation, delivered with measurable ROI from Antananarivo to the world.
-    </p>
-    <div class="hero-cta">
-      <a href="#featured" class="btn-gold"><i class="fas fa-briefcase"></i> View My Work</a>
-      <a href="Guillaume_Tsanta_CV_AI_Engineer-5.docx%20(3).pdf" class="btn-ghost" download><i class="fas fa-download"></i> Download CV</a>
-      <a href="https://www.linkedin.com/in/tsanta1146" class="btn-ghost" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+
+    <!-- Right: orbital animation -->
+    <div class="hero-orbital-col">
+      <div class="orbital-scene">
+        <!-- Static ring tracks -->
+        <div class="orb-track orb-track-1"></div>
+        <div class="orb-track orb-track-2"></div>
+        <div class="orb-track orb-track-3"></div>
+
+        <!-- Center node -->
+        <div class="orb-center"><i class="fas fa-brain"></i></div>
+
+        <!-- Ring 1: inner — Multi-Agent, Voice, Vision (gold) — 3 nodes, R=93px -->
+        <div class="orb-spin orb-spin-1">
+          <div class="orb-node" style="--a:0deg;--r:93px">
+            <div class="orb-node-icon" title="Multi-Agent Systems"><i class="fas fa-robot"></i></div>
+          </div>
+          <div class="orb-node" style="--a:120deg;--r:93px">
+            <div class="orb-node-icon" title="Voice & Speech AI"><i class="fas fa-microphone-lines"></i></div>
+          </div>
+          <div class="orb-node" style="--a:240deg;--r:93px">
+            <div class="orb-node-icon" title="Vision AI"><i class="fas fa-eye"></i></div>
+          </div>
+        </div>
+
+        <!-- Ring 2: middle — Cloud, Data, Search, Automation (blue/teal) — 4 nodes, R=146px -->
+        <div class="orb-spin orb-spin-2">
+          <div class="orb-node" style="--a:45deg;--r:146px">
+            <div class="orb-node-icon blue" title="Cloud Architecture"><i class="fas fa-cloud"></i></div>
+          </div>
+          <div class="orb-node" style="--a:135deg;--r:146px">
+            <div class="orb-node-icon teal" title="Data Engineering"><i class="fas fa-database"></i></div>
+          </div>
+          <div class="orb-node" style="--a:225deg;--r:146px">
+            <div class="orb-node-icon blue" title="Semantic Search"><i class="fas fa-magnifying-glass"></i></div>
+          </div>
+          <div class="orb-node" style="--a:315deg;--r:146px">
+            <div class="orb-node-icon teal" title="Predictive Automation"><i class="fas fa-bolt"></i></div>
+          </div>
+        </div>
+
+        <!-- Ring 3: outer — tech name badges — 5 nodes, R=200px -->
+        <div class="orb-spin orb-spin-3">
+          <div class="orb-node text-nd" style="--a:0deg">
+            <div class="orb-node-text">LangGraph</div>
+          </div>
+          <div class="orb-node text-nd" style="--a:72deg">
+            <div class="orb-node-text">Vertex AI</div>
+          </div>
+          <div class="orb-node text-nd" style="--a:144deg">
+            <div class="orb-node-text">Gemini 2</div>
+          </div>
+          <div class="orb-node text-nd" style="--a:216deg">
+            <div class="orb-node-text">BigQuery</div>
+          </div>
+          <div class="orb-node text-nd" style="--a:288deg">
+            <div class="orb-node-text">n8n</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="hero-scroll"><div class="scroll-mouse"></div><span>Scroll</span></div>
@@ -1279,13 +1435,26 @@ a.tl-co-link i{font-size:0.62em;opacity:0.65;}
           <li>Leading a multi-agent autonomous B2B sales system (Google ADK, Vertex AI, LangGraph) that automates the entire pipeline from cold lead sourcing to deal closing, with RLHF-based outreach optimization and real-time CRM sync.</li>
           <li>Built a multimodal local service search platform where users describe a need in natural language or upload a photo; benchmarked Gemini 2 Multimodal Embedding vs CLIP, selected Gemini 2 as production backbone with BigQuery Vector Search geolocation clustering.</li>
           <li>Delivered an intelligent e-commerce product catalogue search with Mobile Money payment integration (Mvola, Orange Money) for seamless in-app purchases directly from search results.</li>
+          <li>Engineered <strong>BI Wikolabs</strong> — an enterprise natural language BI chatbot with a 6-step self-correcting NL→MQL pipeline: compound question decomposition running parallel async sub-queries (saving ~500ms/query), dynamic schema extraction sampling 500 MongoDB documents nightly into PostgreSQL to prevent LLM hallucinations, pgvector golden records for few-shot context injection, and automatic MQL retry with error feedback eliminating ~30% of query failures — covering 198 tests across unit, integration, and behavioral scenarios.</li>
+          <li>Architected and shipped the <strong>wikolabs.com</strong> corporate landing page — a Next.js 15 + TypeScript platform with a full-featured headless CMS and admin panel backed by MariaDB, enabling non-technical editing of hero, pricing, process, testimonials, and FAQ sections through a secure session-based admin interface; containerized with Docker + Bun for zero-friction local and production deployments.</li>
         </ul>
         <div class="tl-tech">
           <span class="tbadge">Google ADK</span><span class="tbadge">LangGraph</span>
           <span class="tbadge">Gemini 2 Embedding</span><span class="tbadge">BigQuery Vector</span>
           <span class="tbadge">Vertex AI</span><span class="tbadge">RLHF</span><span class="tbadge">Mvola API</span>
+          <span class="tbadge">Groq / llama-3.3-70b</span><span class="tbadge">pgvector</span>
+          <span class="tbadge">MongoDB</span><span class="tbadge">Chainlit</span>
+          <span class="tbadge">Next.js 15</span><span class="tbadge">MariaDB</span><span class="tbadge">Bun</span>
         </div>
         <div class="demo-links">
+          <div class="demo-item">
+            <a class="demo-btn" href="#" data-demo="https://wikolabs.com/" data-label="Wikolabs — AI & Automation Studio">
+              <span class="pulse-dot"></span>Preview · Wikolabs.com
+            </a>
+            <a class="demo-visit" href="https://wikolabs.com/" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt"></i> Visit
+            </a>
+          </div>
           <div class="demo-item">
             <a class="demo-btn" href="#" data-demo="https://bi.wikolabs.com/" data-label="BI Wikolabs — Enterprise Intelligence Agent">
               <span class="pulse-dot"></span>Preview · BI Agent
